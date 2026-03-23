@@ -28,6 +28,8 @@ public class Biblioteka implements BibliotekaInterface {
 
 	@Override
 	public List<Knjiga> pronadjiKnjigu(Autor autor, long isbn, String naslov, String izdavac) {
+		if(autor == null && isbn<=0 && naslov == null && izdavac == null)
+			return null;
 		List<Knjiga> rezultati = new ArrayList<>();
 		for (Knjiga k : knjige) {
 			if(k.getNaslov().toUpperCase().contains(naslov.toUpperCase()))
