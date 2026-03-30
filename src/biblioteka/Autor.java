@@ -21,11 +21,12 @@ public class Autor {
 		this.ime = ime;
 	}
 	public String getPrezime() {
-		if(prezime == null) throw new NullPointerException("Prezime ne sme biti null");
-		if(prezime.isEmpty()) throw new IllegalArgumentException("Prezime ne sme biti prazno");
+		
 		return prezime;
 	}
 	public void setPrezime(String prezime) {
+		if(prezime == null) throw new NullPointerException("Prezime ne sme biti null");
+		if(prezime.isEmpty()) throw new IllegalArgumentException("Prezime ne sme biti prazno");
 		this.prezime = prezime;
 	}
 	@Override
