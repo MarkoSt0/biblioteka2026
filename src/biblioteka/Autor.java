@@ -5,17 +5,24 @@ import java.util.Objects;
 public class Autor {
 	private String ime;
 	private String prezime;
+	
+	public Autor() {}
+	public Autor(String ime, String prezime) {
+		this.setIme(ime);
+		this.setPrezime(prezime);
+	}
+	
 	public String getIme() {
 		return ime;
 	}
 	public void setIme(String ime) {
 		if(ime == null) throw new NullPointerException("Ime ne sme biti null");
-		if(ime.isEmpty()) throw new NullPointerException("Ime ne sme biti prazno");
+		if(ime.isEmpty()) throw new IllegalArgumentException("Ime ne sme biti prazno");
 		this.ime = ime;
 	}
 	public String getPrezime() {
 		if(prezime == null) throw new NullPointerException("Prezime ne sme biti null");
-		if(prezime.isEmpty()) throw new NullPointerException("Prezime ne sme biti prazno");
+		if(prezime.isEmpty()) throw new IllegalArgumentException("Prezime ne sme biti prazno");
 		return prezime;
 	}
 	public void setPrezime(String prezime) {

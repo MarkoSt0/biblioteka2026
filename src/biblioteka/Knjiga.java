@@ -1,6 +1,7 @@
 package biblioteka;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Knjiga {
 	private String naslov;
@@ -14,6 +15,8 @@ public class Knjiga {
 	}
 	
 	public void setNaslov(String naslov) {
+		if(naslov == null) throw new NullPointerException("Naslov ne sme biti null");
+		if(naslov.isEmpty()) throw new IllegalArgumentException("Naslov ne sme biti prazan");
 		this.naslov = naslov;
 	}
 	
@@ -22,6 +25,7 @@ public class Knjiga {
 	}
 	
 	public void setIsbn(long isbn) {
+		if(isbn <= 0) throw new IllegalArgumentException("ISBN mora biti veci od nule");
 		this.isbn = isbn;
 	}
 	
@@ -38,6 +42,8 @@ public class Knjiga {
 	}
 	
 	public void setIzdavac(String izdavac) {
+		if(izdavac == null) throw new NullPointerException("Izdavac ne sme biti null");
+		if(izdavac.isEmpty()) throw new IllegalArgumentException("Izdavac ne sme biti prazan");
 		this.izdavac = izdavac;
 	}
 	
@@ -46,7 +52,31 @@ public class Knjiga {
 	}
 	
 	public void setIzdanje(int izdanje) {
+		if(izdanje <= 0) throw new IllegalArgumentException("Izdanje mora biti vece od nule");
 		this.izdanje = izdanje;
+	}
+
+	@Override
+	public String toString() {
+		return "Knjiga [naslov=" + naslov + ", isbn=" + isbn + ", autori=" + autori + ", izdavac=" + izdavac
+				+ ", izdanje=" + izdanje + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(isbn);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Knjiga other = (Knjiga) obj;
+		return isbn == other.isbn;
 	}
 	
 }
